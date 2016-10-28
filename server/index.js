@@ -3,10 +3,19 @@ import path from 'path';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../webpack.config.dev';
 
-import webpackConfig from '../webpack.config.dev.js';
 
 let app = express();
+
+const compiler = webpack(webpackConfig);
+
+app.use(webpackMiddleware(compiler,{
+    hot:true,
+    publicPath:webpackConfig.output.publicPath,
+    noInfo: true
+}))
 
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
