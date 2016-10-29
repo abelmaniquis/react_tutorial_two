@@ -11,7 +11,7 @@ export default {
         publicPath: '/'
     },
     plugins:[
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
